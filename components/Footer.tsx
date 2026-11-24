@@ -1,4 +1,5 @@
-import { Globe, Mail, MapPin } from "lucide-react";
+import Image from "next/image";
+import { Mail, MapPin } from "lucide-react";
 
 function InstagramIcon() {
   return (
@@ -45,16 +46,22 @@ export default function Footer() {
         <div className="grid gap-10 md:grid-cols-12">
           {/* Identidad Institucional */}
           <div className="md:col-span-6">
-            <div className="flex items-center gap-3">
-              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#1E3A8A] text-white">
-                <Globe className="h-5 w-5 text-[#0EA5E9]" aria-hidden="true" />
+            <div className="flex items-center gap-3.5">
+              <span className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full border border-white/20 bg-white shadow-sm">
+                <Image
+                  src="/logo-global-shapers-sv.jpg"
+                  alt="Logo Global Shapers Community San Salvador"
+                  fill
+                  sizes="48px"
+                  className="object-cover"
+                />
               </span>
               <div>
-                <p className="font-display text-base font-bold text-white sm:text-lg">
+                <p className="font-display text-base font-bold uppercase tracking-tight text-white sm:text-lg">
                   Global Shapers Community – Hub San Salvador
                 </p>
                 <p className="text-xs text-slate-400">
-                  globalshaperssv.org · Iniciativa del Foro Económico Mundial
+                  globalshaperssv.org · Impacto social desde 2012
                 </p>
               </div>
             </div>

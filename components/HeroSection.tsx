@@ -4,7 +4,7 @@ export default function HeroSection() {
   return (
     <section
       aria-labelledby="hero-heading"
-      className="relative overflow-hidden bg-gradient-to-br from-[#0F2C59] via-[#15366B] to-[#1E3A8A] pt-28 pb-20 text-white sm:pt-36 sm:pb-28"
+      className="relative overflow-hidden bg-gradient-to-br from-[#0F2C59] via-[#0E4D92] to-[#1D4ED8] pt-28 pb-20 text-white sm:pt-36 sm:pb-28"
     >
       {/* Elementos decorativos sutiles de fondo */}
       <div
@@ -33,13 +33,13 @@ export default function HeroSection() {
             Salvador
           </h1>
 
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-200 sm:text-xl">
-            Somos jóvenes voluntarios de{" "}
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-100 sm:text-xl">
+            Jóvenes voluntarios de{" "}
             <strong className="font-semibold text-white">
               Global Shapers San Salvador
             </strong>{" "}
-            impulsando soluciones locales sostenibles en educación financiera,
-            bienestar comunitario y desarrollo social.
+            creando proyectos de impacto social en educación financiera,
+            resiliencia comunitaria y bienestar juvenil desde 2012.
           </p>
 
           {/* Botones de Acción (CTAs) */}

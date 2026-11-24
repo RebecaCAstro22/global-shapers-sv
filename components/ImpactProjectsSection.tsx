@@ -34,14 +34,14 @@ interface ProjectLine {
 /* TODO: Reemplazar o ampliar con los proyectos vigentes del Hub San Salvador */
 const PROJECT_LINES: ProjectLine[] = [
   {
-    id: "educacion-financiera",
+    id: "finanzas-en-juego",
     tag: "Línea Estratégica 01",
-    title: "Educación Financiera Juvenil",
+    title: "Finanzas en Juego · Educación Financiera",
     summary:
-      "Talleres prácticos sobre ahorro, presupuesto personal, prevención del sobreendeudamiento y herramientas digitales para jóvenes de bachillerato y universidades.",
+      "Talleres prácticos y dinámicos sobre ahorro, presupuesto personal, prevención del sobreendeudamiento y herramientas digitales para jóvenes salvadoreños.",
     icon: PiggyBank,
-    colorClass: "bg-sky-50 text-[#0EA5E9]",
-    beneficiaries: "Jóvenes entre 15 y 24 años",
+    colorClass: "bg-sky-50 text-[#0E4D92]",
+    beneficiaries: "Jóvenes estudiantes y emprendedores",
     location: "Área Metropolitana de San Salvador",
     highlights: [
       "Módulos interactivos de finanzas personales y emprendimiento.",
@@ -50,35 +50,35 @@ const PROJECT_LINES: ProjectLine[] = [
     ],
   },
   {
-    id: "desarrollo-comunitario",
+    id: "resiliencia-en-accion",
     tag: "Línea Estratégica 02",
-    title: "Desarrollo Comunitario e Infancia",
+    title: "Resiliencia en Acción · Desarrollo Comunitario",
     summary:
-      "Jornadas integrales de bienestar comunitario, fortalecimiento escolar, acceso a kits educativos y espacios seguros para la niñez y sus familias.",
+      "Jornadas territoriales de entrega de víveres, fortalecimiento escolar y bienestar integral junto a comunidades prioritarias de San Salvador.",
     icon: BookOpen,
     colorClass: "bg-amber-50 text-[#F59E0B]",
-    beneficiaries: "Niñez, madres de familia y centros escolares",
-    location: "Comunidades prioritarias de San Salvador",
+    beneficiaries: "Familias, niñez y comunidades locales",
+    location: "Comunidad El Granjero 2 y zonas de San Salvador",
     highlights: [
-      "Dotación de útiles escolares, libros y material didáctico.",
-      "Actividades recreativas, lectura y habilidades socioemocionales.",
-      "Alianzas con líderes comunitarios locales.",
+      "Entrega directa de víveres, kits educativos y apoyo comunitario.",
+      "Eventos con propósito como Yoga con Propósito para recaudar fondos.",
+      "Articulación con líderes comunitarios y aliados locales.",
     ],
   },
   {
-    id: "innovacion-liderazgo",
+    id: "salud-mental-liderazgo",
     tag: "Línea Estratégica 03",
-    title: "Innovación y Liderazgo Social",
+    title: "Salud Mental y Liderazgo Juvenil",
     summary:
-      "Laboratorios ciudadanos y programas de formación para que jóvenes salvadoreños conviertan ideas en iniciativas comunitarias medibles.",
+      "Campañas de concientización, prevención y espacios de formación para que la juventud lidere iniciativas de bienestar e impacto social.",
     icon: Lightbulb,
-    colorClass: "bg-indigo-50 text-[#1E3A8A]",
-    beneficiaries: "Agentes de cambio y líderes emergentes",
-    location: "San Salvador y alcance nacional digital",
+    colorClass: "bg-blue-50 text-[#1D4ED8]",
+    beneficiaries: "Jóvenes agentes de cambio y comunidad digital",
+    location: "San Salvador y alcance nacional",
     highlights: [
-      "Bootcamps de diseño de proyectos sociales y ODS.",
+      "Campañas educativas sobre salud mental y prevención.",
+      "Formación de nuevos Shapers y voluntarios en liderazgo social.",
       "Conexión con la red global del Foro Económico Mundial.",
-      "Acompañamiento en sostenibilidad e impacto social.",
     ],
   },
 ];

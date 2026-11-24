@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import { Inter, Montserrat } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -8,9 +8,10 @@ const inter = Inter({
   display: "swap",
 });
 
-const plusJakarta = Plus_Jakarta_Sans({
-  variable: "--font-jakarta",
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
   subsets: ["latin"],
+  weight: ["600", "700", "800"],
   display: "swap",
 });
 
@@ -18,19 +19,20 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://globalshaperssv.org"),
   title: "Global Shapers San Salvador | Liderazgo Juvenil e Impacto Social",
   description:
-    "Global Shapers Community – Hub San Salvador es una organización juvenil sin fines de lucro impulsada por el Foro Económico Mundial, dedicada a la educación financiera, bienestar comunitario y desarrollo social en El Salvador.",
+    "Global Shapers Community – Hub San Salvador es una organización juvenil sin fines de lucro impulsada por el Foro Económico Mundial. Desde 2012 creando proyectos de impacto social en San Salvador, El Salvador.",
   keywords: [
     "Global Shapers San Salvador",
     "ONG El Salvador",
     "voluntariado juvenil El Salvador",
-    "educación financiera juvenil",
+    "Finanzas en Juego",
+    "Resiliencia en Acción",
     "impacto social San Salvador",
     "Foro Económico Mundial",
   ],
   openGraph: {
     title: "Global Shapers Community – Hub San Salvador",
     description:
-      "Jóvenes voluntarios impulsando soluciones locales en educación financiera, bienestar comunitario y desarrollo social en El Salvador.",
+      "Jóvenes creando proyectos de impacto social en San Salvador desde 2012. Educación financiera, resiliencia comunitaria y bienestar juvenil.",
     url: "https://globalshaperssv.org",
     siteName: "Global Shapers San Salvador",
     locale: "es_SV",
@@ -46,9 +48,9 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${inter.variable} ${plusJakarta.variable} scroll-smooth`}
+      className={`${inter.variable} ${montserrat.variable} scroll-smooth`}
     >
-      <body className="min-h-screen bg-white font-sans text-slate-800 antialiased selection:bg-[#0EA5E9]/20 selection:text-[#0F2C59]">
+      <body className="min-h-screen bg-white font-sans text-slate-800 antialiased selection:bg-[#1D4ED8]/15 selection:text-[#0E4D92]">
         {children}
       </body>
     </html>

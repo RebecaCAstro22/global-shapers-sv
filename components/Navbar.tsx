@@ -1,7 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
-import { Globe, Heart, Menu, X } from "lucide-react";
+import { Heart, Menu, X } from "lucide-react";
 
 const NAV_LINKS = [
   { href: "#quienes-somos", label: "Quiénes Somos" },
@@ -22,17 +23,24 @@ export default function Navbar() {
         {/* Logo / Nombre Oficial */}
         <a
           href="#"
-          className="group flex items-center gap-3 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0EA5E9]"
+          className="group flex items-center gap-3 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0E4D92]"
         >
-          <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#0F2C59] text-white shadow-sm transition-transform group-hover:scale-105">
-            <Globe className="h-6 w-6 text-[#0EA5E9]" aria-hidden="true" />
+          <span className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full border border-slate-200 bg-white shadow-sm transition-transform group-hover:scale-105">
+            <Image
+              src="/logo-global-shapers-sv.jpg"
+              alt="Logo oficial Global Shapers Community San Salvador"
+              fill
+              sizes="48px"
+              className="object-cover"
+              priority
+            />
           </span>
           <span className="flex flex-col">
-            <span className="font-display text-base font-bold tracking-tight text-[#0F2C59] sm:text-lg">
+            <span className="font-display text-sm font-extrabold uppercase tracking-tight text-[#0E4D92] sm:text-base">
               Global Shapers San Salvador
             </span>
-            <span className="text-[11px] font-medium uppercase tracking-wider text-slate-500">
-              Hub San Salvador · WEF
+            <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-500">
+              Desde 2012 · Hub San Salvador
             </span>
           </span>
         </a>

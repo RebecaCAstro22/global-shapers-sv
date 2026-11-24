@@ -44,9 +44,9 @@ export default function AboutSection() {
             <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">
               <strong>Global Shapers Community – Hub San Salvador</strong> es
               una iniciativa nacida en el marco del{" "}
-              <strong>Foro Económico Mundial (WEF)</strong>, integrada por
-              jóvenes líderes voluntarios comprometidos con el progreso social de
-              El Salvador.
+              <strong>Foro Económico Mundial (WEF)</strong>. Desde{" "}
+              <strong>2012</strong>, reunimos a jóvenes líderes voluntarios
+              comprometidos con el progreso social de El Salvador.
             </p>
             <p className="mt-4 text-base leading-relaxed text-slate-600">
               Operamos formalmente como una{" "}

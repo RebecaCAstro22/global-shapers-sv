@@ -2,12 +2,13 @@
 
 @theme inline {
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-jakarta), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --color-navy-950: #091d3e;
-  --color-navy-900: #0f2c59;
-  --color-navy-800: #1e3a8a;
-  --color-accent-amber: #f59e0b;
-  --color-accent-sky: #0ea5e9;
+  --font-display: var(--font-montserrat), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  /* Paleta oficial extraída de @globalshaperssv */
+  --color-shapers-navy: #0f2c59;
+  --color-shapers-blue: #0e4d92;
+  --color-shapers-royal: #1d4ed8;
+  --color-shapers-amber: #f59e0b;
+  --color-shapers-sky: #0ea5e9;
 }
 
 html {
