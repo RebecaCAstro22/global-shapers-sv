@@ -1,17 +1,18 @@
 import type { Metadata } from "next";
-import { Inter, Montserrat } from "next/font/google";
+import { DM_Sans, Jost } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const jost = Jost({
+  variable: "--font-jost",
   subsets: ["latin"],
+  weight: ["500", "600", "700", "800"],
   display: "swap",
 });
 
-const montserrat = Montserrat({
-  variable: "--font-montserrat",
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
   subsets: ["latin"],
-  weight: ["600", "700", "800"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -48,9 +49,9 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${inter.variable} ${montserrat.variable} scroll-smooth`}
+      className={`${jost.variable} ${dmSans.variable} scroll-smooth`}
     >
-      <body className="min-h-screen bg-white font-sans text-slate-800 antialiased selection:bg-[#1D4ED8]/15 selection:text-[#0E4D92]">
+      <body className="min-h-screen bg-white font-sans text-[#4A5355] antialiased selection:bg-[#1D4ED8] selection:text-white">
         {children}
       </body>
     </html>

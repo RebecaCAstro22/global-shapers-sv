@@ -1,265 +1,191 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import {
   ArrowUpRight,
   BookOpen,
   CheckCircle2,
   Heart,
+  ImageIcon,
   Lightbulb,
+  MapPin,
   PiggyBank,
   Users,
 } from "lucide-react";
+import { HUB_PROJECTS, type ProjectCategory } from "@/data/projects";
 
-/* TODO: Actualizar estas métricas con los datos reales auditados del Hub San Salvador */
-const IMPACT_METRICS = [
-  { value: "+45", label: "Voluntarios y Shapers Activos" },
-  { value: "18+", label: "Comunidades Impactadas" },
-  { value: "120+", label: "Talleres y Jornadas Impartidas" },
-  { value: "3,500+", label: "Jóvenes y Familias Beneficiadas" },
-];
+const CATEGORY_ICONS: Record<ProjectCategory, typeof PiggyBank> = {
+  "Educación Financiera": PiggyBank,
+  "Desarrollo Comunitario": BookOpen,
+  "Bienestar y Liderazgo": Lightbulb,
+};
 
-interface ProjectLine {
-  id: string;
-  tag: string;
-  title: string;
-  summary: string;
-  icon: typeof PiggyBank;
-  colorClass: string;
-  beneficiaries: string;
-  location: string;
-  highlights: string[];
-}
-
-/* TODO: Reemplazar o ampliar con los proyectos vigentes del Hub San Salvador */
-const PROJECT_LINES: ProjectLine[] = [
-  {
-    id: "finanzas-en-juego",
-    tag: "Línea Estratégica 01",
-    title: "Finanzas en Juego · Educación Financiera",
-    summary:
-      "Talleres prácticos y dinámicos sobre ahorro, presupuesto personal, prevención del sobreendeudamiento y herramientas digitales para jóvenes salvadoreños.",
-    icon: PiggyBank,
-    colorClass: "bg-sky-50 text-[#0E4D92]",
-    beneficiaries: "Jóvenes estudiantes y emprendedores",
-    location: "Área Metropolitana de San Salvador",
-    highlights: [
-      "Módulos interactivos de finanzas personales y emprendimiento.",
-      "Entrega de guías impresas y plantillas digitales de presupuesto.",
-      "Mentorías con jóvenes profesionales del Hub San Salvador.",
-    ],
-  },
-  {
-    id: "resiliencia-en-accion",
-    tag: "Línea Estratégica 02",
-    title: "Resiliencia en Acción · Desarrollo Comunitario",
-    summary:
-      "Jornadas territoriales de entrega de víveres, fortalecimiento escolar y bienestar integral junto a comunidades prioritarias de San Salvador.",
-    icon: BookOpen,
-    colorClass: "bg-amber-50 text-[#F59E0B]",
-    beneficiaries: "Familias, niñez y comunidades locales",
-    location: "Comunidad El Granjero 2 y zonas de San Salvador",
-    highlights: [
-      "Entrega directa de víveres, kits educativos y apoyo comunitario.",
-      "Eventos con propósito como Yoga con Propósito para recaudar fondos.",
-      "Articulación con líderes comunitarios y aliados locales.",
-    ],
-  },
-  {
-    id: "salud-mental-liderazgo",
-    tag: "Línea Estratégica 03",
-    title: "Salud Mental y Liderazgo Juvenil",
-    summary:
-      "Campañas de concientización, prevención y espacios de formación para que la juventud lidere iniciativas de bienestar e impacto social.",
-    icon: Lightbulb,
-    colorClass: "bg-blue-50 text-[#1D4ED8]",
-    beneficiaries: "Jóvenes agentes de cambio y comunidad digital",
-    location: "San Salvador y alcance nacional",
-    highlights: [
-      "Campañas educativas sobre salud mental y prevención.",
-      "Formación de nuevos Shapers y voluntarios en liderazgo social.",
-      "Conexión con la red global del Foro Económico Mundial.",
-    ],
-  },
-];
+const FEATURED_PROJECTS = HUB_PROJECTS.filter((p) => p.featured);
 
 export default function ImpactProjectsSection() {
-  const [selectedId, setSelectedId] = useState<string>(PROJECT_LINES[0].id);
+  const [selectedSlug, setSelectedSlug] = useState<string>(
+    FEATURED_PROJECTS[0].slug
+  );
   const activeProject =
-    PROJECT_LINES.find((p) => p.id === selectedId) ?? PROJECT_LINES[0];
+    FEATURED_PROJECTS.find((p) => p.slug === selectedSlug) ??
+    FEATURED_PROJECTS[0];
 
   return (
     <section
-      id="impacto"
-      aria-labelledby="impact-heading"
-      className="bg-slate-50 py-20 sm:py-24"
+      id="proyectos"
+      aria-labelledby="projects-heading"
+      className="bg-[#F8FAFC] py-20 sm:py-24"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Barra de Métricas de Impacto */}
-        <div className="rounded-3xl bg-[#0F2C59] p-8 text-white shadow-xl sm:p-10">
-          <div className="flex flex-col justify-between gap-4 border-b border-white/15 pb-6 sm:flex-row sm:items-end">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-[#0EA5E9]">
-                Nuestro Impacto Medible
-              </span>
-              <h2
-                id="impact-heading"
-                className="mt-1 font-display text-2xl font-extrabold sm:text-3xl"
-              >
-                Resultados impulsados por juventud voluntaria
-              </h2>
-            </div>
-            <p className="text-xs text-slate-300 sm:text-sm">
-              Cifras acumuladas del Hub San Salvador
-            </p>
-          </div>
-
-          <div className="mt-8 grid grid-cols-2 gap-6 lg:grid-cols-4">
-            {IMPACT_METRICS.map((metric) => (
-              <div
-                key={metric.label}
-                className="rounded-2xl border border-white/10 bg-white/5 p-5"
-              >
-                <p className="font-display text-3xl font-extrabold text-[#F59E0B] sm:text-4xl">
-                  {metric.value}
-                </p>
-                <p className="mt-2 text-sm font-medium text-slate-200">
-                  {metric.label}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Sección de Proyectos y Líneas de Acción */}
-        <div id="proyectos" className="mt-20 scroll-mt-24">
-          <div className="mx-auto max-w-3xl text-center">
-            <span className="inline-block rounded-full bg-sky-100 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-[#1E3A8A]">
+        {/* Encabezado estilo Eduleb (.home_course) */}
+        <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+          <div>
+            <span className="font-sans text-xs font-bold uppercase tracking-wider text-[#1D4ED8]">
               Qué Hacemos
             </span>
-            <h3 className="mt-3 font-display text-3xl font-extrabold tracking-tight text-[#0F2C59] sm:text-4xl">
-              Nuestras líneas de acción y proyectos
-            </h3>
-            <p className="mt-4 text-base text-slate-600 sm:text-lg">
-              Selecciona cualquiera de nuestras áreas para explorar cómo
-              trabajamos en territorio junto a las comunidades salvadoreñas.
-            </p>
+            <h2
+              id="projects-heading"
+              className="mt-2 font-display text-3xl font-bold text-[#0B104A] sm:text-4xl"
+            >
+              Nuestros <span className="text-[#1D4ED8]">Proyectos</span> de
+              Impacto Social
+            </h2>
           </div>
 
-          {/* Tarjetas interactivas */}
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {PROJECT_LINES.map((project) => {
-              const Icon = project.icon;
-              const isSelected = project.id === selectedId;
-              return (
-                <button
-                  key={project.id}
-                  type="button"
-                  onClick={() => setSelectedId(project.id)}
-                  aria-pressed={isSelected}
-                  className={`group flex flex-col justify-between rounded-2xl border p-6 text-left transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0EA5E9] ${
-                    isSelected
-                      ? "border-[#1E3A8A] bg-white shadow-lg ring-2 ring-[#1E3A8A]/15"
-                      : "border-slate-200 bg-white shadow-sm hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md"
-                  }`}
-                >
-                  <div>
-                    <div className="flex items-center justify-between">
-                      <span
-                        className={`flex h-12 w-12 items-center justify-center rounded-xl ${project.colorClass}`}
-                      >
-                        <Icon className="h-6 w-6" aria-hidden="true" />
-                      </span>
-                      <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                        {project.tag}
-                      </span>
-                    </div>
+          <Link
+            href="/proyectos"
+            className="inline-flex shrink-0 items-center gap-2 self-start rounded-sm bg-[#1D4ED8] px-6 py-3.5 font-sans text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#0E4D92] md:self-auto"
+          >
+            Ver todos los proyectos ({HUB_PROJECTS.length})
+            <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+          </Link>
+        </div>
 
-                    <h4 className="mt-5 font-display text-xl font-bold text-[#0F2C59]">
+        {/* Grid de 3 tarjetas estilo Eduleb (.single_course) con bloques de color para futuras imágenes */}
+        <div className="mt-12 grid gap-7 md:grid-cols-3">
+          {FEATURED_PROJECTS.map((project) => {
+            const Icon = CATEGORY_ICONS[project.badge];
+            const isSelected = project.slug === selectedSlug;
+            return (
+              <button
+                key={project.slug}
+                type="button"
+                onClick={() => setSelectedSlug(project.slug)}
+                aria-pressed={isSelected}
+                className={`group flex flex-col overflow-hidden rounded-xl border bg-white text-left transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1D4ED8] ${
+                  isSelected
+                    ? "border-[#1D4ED8] shadow-xl ring-2 ring-[#1D4ED8]/15"
+                    : "border-slate-200 shadow-sm hover:-translate-y-1 hover:shadow-lg"
+                }`}
+              >
+                {/* Bloque de color reservado para la foto del proyecto */}
+                <div
+                  className={`relative flex h-48 w-full flex-col items-center justify-center bg-gradient-to-br ${project.gradientClass} p-6 text-white`}
+                >
+                  <span className="absolute left-4 top-4 rounded-sm bg-white/95 px-3 py-1 font-sans text-xs font-bold text-[#0B104A] shadow-sm">
+                    {project.badge}
+                  </span>
+                  <span className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/25 bg-white/15 backdrop-blur-sm">
+                    <ImageIcon className="h-7 w-7 text-white" aria-hidden="true" />
+                  </span>
+                  <span className="mt-2 font-sans text-[11px] font-medium text-white/85">
+                    Espacio para foto del proyecto
+                  </span>
+                </div>
+
+                {/* Cuerpo de la tarjeta */}
+                <div className="flex flex-1 flex-col justify-between p-6">
+                  <div>
+                    <div className="flex items-center gap-2 font-sans text-xs font-semibold text-[#1D4ED8]">
+                      <Icon className="h-4 w-4" aria-hidden="true" />
+                      <span>{project.beneficiaries}</span>
+                    </div>
+                    <h3 className="mt-2.5 font-display text-xl font-bold text-[#0B104A] group-hover:text-[#1D4ED8]">
                       {project.title}
-                    </h4>
-                    <p className="mt-2.5 text-sm leading-relaxed text-slate-600">
+                    </h3>
+                    <p className="mt-2.5 font-serif text-sm leading-relaxed text-[#4A5355]">
                       {project.summary}
                     </p>
                   </div>
 
-                  <div className="mt-6 flex items-center justify-between border-t border-slate-100 pt-4 text-xs font-bold text-[#1E3A8A]">
-                    <span>
-                      {isSelected ? "Viendo detalles" : "Explorar línea de acción"}
+                  <div className="mt-5 flex items-center justify-between border-t border-slate-100 pt-4 font-sans text-xs font-semibold text-slate-500">
+                    <span className="inline-flex items-center gap-1.5">
+                      <MapPin className="h-3.5 w-3.5 text-[#1D4ED8]" aria-hidden="true" />
+                      San Salvador
                     </span>
-                    <ArrowUpRight
-                      className={`h-4 w-4 transition-transform ${
-                        isSelected
-                          ? "translate-x-0.5 -translate-y-0.5 text-[#F59E0B]"
-                          : "group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                      }`}
-                      aria-hidden="true"
-                    />
+                    <span className="font-bold text-[#1D4ED8]">
+                      {isSelected ? "Seleccionado ✓" : "Ver detalles →"}
+                    </span>
                   </div>
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Panel de Detalle Interactivo del Proyecto Seleccionado */}
-          <div className="mt-8 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
-            <div className="grid items-center gap-8 lg:grid-cols-12">
-              <div className="lg:col-span-7">
-                <div className="flex flex-wrap items-center gap-3">
-                  <span className="rounded-full bg-[#0F2C59] px-3 py-1 text-xs font-bold text-white">
-                    {activeProject.tag}
-                  </span>
-                  <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500">
-                    <Users className="h-4 w-4 text-[#0EA5E9]" aria-hidden="true" />
-                    {activeProject.beneficiaries}
-                  </span>
                 </div>
+              </button>
+            );
+          })}
+        </div>
 
-                <h4 className="mt-3 font-display text-2xl font-bold text-[#0F2C59]">
-                  {activeProject.title}
-                </h4>
-                <p className="mt-2 text-sm text-slate-500">
-                  Cobertura: {activeProject.location}
-                </p>
-
-                <ul className="mt-5 space-y-3">
-                  {activeProject.highlights.map((item) => (
-                    <li key={item} className="flex items-start gap-2.5 text-sm text-slate-700 sm:text-base">
-                      <CheckCircle2
-                        className="mt-0.5 h-5 w-5 shrink-0 text-[#0EA5E9]"
-                        aria-hidden="true"
-                      />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
+        {/* Panel Detallado del Proyecto Seleccionado */}
+        <div className="mt-8 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+          <div className="grid items-center gap-8 lg:grid-cols-12">
+            <div className="lg:col-span-7">
+              <div className="flex flex-wrap items-center gap-3">
+                <span className="rounded-sm bg-[#0B104A] px-3 py-1 font-sans text-xs font-bold text-white">
+                  {activeProject.badge}
+                </span>
+                <span className="inline-flex items-center gap-1.5 font-sans text-xs font-semibold text-slate-500">
+                  <Users className="h-4 w-4 text-[#1D4ED8]" aria-hidden="true" />
+                  {activeProject.beneficiaries}
+                </span>
               </div>
 
-              <div className="flex flex-col justify-between rounded-2xl bg-slate-50 p-6 lg:col-span-5">
-                <div>
-                  <p className="text-xs font-bold uppercase tracking-wider text-[#1E3A8A]">
-                    Impulsa este programa
-                  </p>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                    Tu aporte financia materiales, logística de talleres y
-                    acompañamiento directo en comunidades de San Salvador.
-                  </p>
-                </div>
-                <div className="mt-6 flex flex-col gap-3 sm:flex-row lg:flex-col">
-                  <a
-                    href="#donar"
-                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#F59E0B] px-5 py-3 text-sm font-bold text-[#0F2C59] transition-colors hover:bg-[#D97706] hover:text-white"
+              <h3 className="mt-3 font-display text-2xl font-bold text-[#0B104A]">
+                {activeProject.title}
+              </h3>
+              <p className="mt-1 font-sans text-sm text-slate-500">
+                Cobertura: {activeProject.location}
+              </p>
+
+              <ul className="mt-5 space-y-3">
+                {activeProject.highlights.map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-start gap-2.5 font-serif text-sm text-[#4A5355] sm:text-base"
                   >
-                    <Heart className="h-4 w-4 fill-current" aria-hidden="true" />
-                    Apoyar este proyecto
-                  </a>
-                  <a
-                    href="#involucrate"
-                    className="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-[#0F2C59] transition-colors hover:bg-slate-100"
-                  >
-                    Sumarme como voluntario
-                  </a>
-                </div>
+                    <CheckCircle2
+                      className="mt-0.5 h-5 w-5 shrink-0 text-[#1D4ED8]"
+                      aria-hidden="true"
+                    />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="flex flex-col justify-between rounded-xl bg-[#F7F9FF] p-6 lg:col-span-5">
+              <div>
+                <p className="font-sans text-xs font-bold uppercase tracking-wider text-[#1D4ED8]">
+                  Impulsa este programa
+                </p>
+                <p className="mt-2 font-serif text-sm leading-relaxed text-[#4A5355]">
+                  Tu aporte financia materiales educativos, logística de talleres
+                  y acompañamiento directo en comunidades de San Salvador.
+                </p>
+              </div>
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row lg:flex-col">
+                <a
+                  href="#donar"
+                  className="inline-flex items-center justify-center gap-2 rounded-sm bg-[#1D4ED8] px-5 py-3 font-sans text-sm font-bold text-white transition-colors hover:bg-[#0E4D92]"
+                >
+                  <Heart className="h-4 w-4 fill-current" aria-hidden="true" />
+                  Apoyar este proyecto
+                </a>
+                <Link
+                  href={`/proyectos/${activeProject.slug}`}
+                  className="inline-flex items-center justify-center gap-1.5 rounded-sm border border-slate-300 bg-white px-5 py-3 font-sans text-sm font-semibold text-[#0B104A] transition-colors hover:bg-slate-50"
+                >
+                  Ver ficha completa
+                  <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
               </div>
             </div>
           </div>

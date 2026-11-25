@@ -1,13 +1,16 @@
 @import "tailwindcss";
 
 @theme inline {
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-montserrat), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  /* Paleta oficial extraída de @globalshaperssv */
+  --font-display: var(--font-jost), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+
+  /* Paleta combinada: Plantilla Eduleb + Identidad Global Shapers SV */
+  --color-shapers-ink: #0b104a;
   --color-shapers-navy: #0f2c59;
   --color-shapers-blue: #0e4d92;
   --color-shapers-royal: #1d4ed8;
-  --color-shapers-amber: #f59e0b;
+  --color-shapers-indigo: #525fe1;
   --color-shapers-sky: #0ea5e9;
 }
 
@@ -15,7 +18,6 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Offset anchor targets for fixed navbar */
 section[id] {
-  scroll-margin-top: 5rem;
+  scroll-margin-top: 5.5rem;
 }

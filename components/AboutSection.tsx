@@ -1,129 +1,188 @@
-import { Award, Building2, Compass, Eye, HeartHandshake, ShieldCheck } from "lucide-react";
+import { ArrowUpRight, Check, ImageIcon, ShieldCheck } from "lucide-react";
 
-const PILLARS = [
+const ACTION_PILLARS = [
   {
-    icon: Compass,
-    title: "Nuestra Misión",
+    number: "01",
+    title: "Educación Financiera",
     description:
-      "Empoderar a jóvenes salvadoreños para diseñar y ejecutar proyectos de alto impacto en educación financiera, inclusión social y desarrollo comunitario.",
+      "Capacitamos a jóvenes en ahorro, presupuesto y herramientas económicas prácticas.",
+    badgeColor: "bg-blue-50 text-[#1D4ED8]",
   },
   {
-    icon: Eye,
-    title: "Nuestra Visión",
+    number: "02",
+    title: "Bienestar Comunitario",
     description:
-      "Un El Salvador donde las juventudes lideran soluciones innovadoras, equitativas y sostenibles que fortalecen el tejido social de cada comunidad.",
+      "Acompañamos a familias y niñez salvadoreña con jornadas territoriales directas.",
+    badgeColor: "bg-sky-50 text-[#0EA5E9]",
   },
   {
-    icon: Award,
-    title: "Nuestros Valores",
+    number: "03",
+    title: "Liderazgo Juvenil",
     description:
-      "Transparencia, servicio comunitario, colaboración multisectorial, integridad en la rendición de cuentas e innovación con propósito social.",
+      "Formamos agentes de cambio conectados con la red global del Foro Económico Mundial.",
+    badgeColor: "bg-indigo-50 text-[#525FE1]",
+  },
+  {
+    number: "04",
+    title: "Transparencia ONG",
+    description:
+      "Gestión sin fines de lucro en San Salvador con rendición de cuentas abierta.",
+    badgeColor: "bg-cyan-50 text-[#0E4D92]",
   },
 ];
 
 export default function AboutSection() {
   return (
-    <section
-      id="quienes-somos"
-      aria-labelledby="about-heading"
-      className="bg-white py-20 sm:py-24"
-    >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid items-start gap-12 lg:grid-cols-12">
-          {/* Descripción institucional y respaldo ONG */}
-          <div className="lg:col-span-5">
-            <span className="inline-block rounded-full bg-sky-50 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-[#1E3A8A]">
-              Quiénes Somos
-            </span>
-            <h2
-              id="about-heading"
-              className="mt-4 font-display text-3xl font-extrabold tracking-tight text-[#0F2C59] sm:text-4xl"
-            >
-              Identidad local con respaldo global
+    <>
+      {/* SECCIÓN 01-04 ESTILO EDULEB (.top_cat__area) */}
+      <section className="bg-gradient-to-b from-white to-[#F7F9FF] py-16 sm:py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="font-display text-3xl font-bold text-[#0B104A] sm:text-4xl">
+              Impulsando el cambio social en El Salvador
             </h2>
-            <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">
-              <strong>Global Shapers Community – Hub San Salvador</strong> es
-              una iniciativa nacida en el marco del{" "}
-              <strong>Foro Económico Mundial (WEF)</strong>. Desde{" "}
-              <strong>2012</strong>, reunimos a jóvenes líderes voluntarios
-              comprometidos con el progreso social de El Salvador.
+            <p className="mt-4 font-serif text-base leading-relaxed text-[#4A5355] sm:text-lg">
+              Cuatro pilares que guían cada proyecto comunitario diseñado por
+              nuestra red de jóvenes voluntarios en San Salvador.
             </p>
-            <p className="mt-4 text-base leading-relaxed text-slate-600">
-              Operamos formalmente como una{" "}
-              <strong>
-                organización juvenil sin fines de lucro en San Salvador, El
-                Salvador
-              </strong>
-              , articulando esfuerzos entre juventud, comunidades locales,
-              centros educativos y aliados estratégicos para generar cambios
-              medibles y duraderos.
-            </p>
+          </div>
 
-            {/* Sello de Estatus Sin Fines de Lucro */}
-            <div className="mt-7 rounded-2xl border border-slate-200 bg-slate-50 p-5">
-              <div className="flex items-start gap-3.5">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#0F2C59] text-white">
-                  <Building2 className="h-5 w-5 text-[#F59E0B]" aria-hidden="true" />
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {ACTION_PILLARS.map((pillar) => (
+              <div
+                key={pillar.number}
+                className="rounded-xl border border-slate-200/80 bg-white p-7 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
+              >
+                <span
+                  className={`inline-flex h-12 w-12 items-center justify-center rounded-full font-display text-lg font-bold ${pillar.badgeColor}`}
+                >
+                  {pillar.number}
                 </span>
-                <div>
-                  <h3 className="text-sm font-bold text-[#0F2C59]">
-                    Estatus Institucional y Transparencia
-                  </h3>
-                  <p className="mt-1 text-xs leading-relaxed text-slate-600 sm:text-sm">
-                    Operación sin fines de lucro en San Salvador, El Salvador.
-                    Cada proyecto y donación se gestiona bajo principios de
-                    rendición de cuentas abierta.
+                <h3 className="mt-5 font-display text-xl font-bold text-[#0B104A]">
+                  {pillar.title}
+                </h3>
+                <p className="mt-3 font-serif text-sm leading-relaxed text-[#4A5355]">
+                  {pillar.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* QUIÉNES SOMOS ESTILO EDULEB (.ab_area: Imagen izquierda / Contenido derecha) */}
+      <section
+        id="quienes-somos"
+        aria-labelledby="about-heading"
+        className="bg-white py-20 sm:py-24"
+      >
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid items-center gap-12 lg:grid-cols-12">
+            {/* Columna Izquierda: Fondo de color reservado para foto institucional del Hub */}
+            {/* TODO: Reemplazar con fotografía del equipo/curaduría de Global Shapers San Salvador */}
+            <div className="lg:col-span-6">
+              <div className="relative mx-auto max-w-lg lg:mx-0">
+                <div className="flex aspect-[4/3.6] w-full flex-col items-center justify-center overflow-hidden rounded-3xl bg-gradient-to-tr from-[#0B104A] via-[#0E4D92] to-[#38BDF8] p-8 text-center text-white shadow-xl">
+                  <span className="flex h-16 w-16 items-center justify-center rounded-2xl border border-white/25 bg-white/10">
+                    <ImageIcon className="h-8 w-8 text-sky-100" aria-hidden="true" />
+                  </span>
+                  <p className="mt-4 font-display text-xl font-bold">
+                    Equipo Hub San Salvador
+                  </p>
+                  <p className="mt-2 max-w-xs font-serif text-sm text-sky-100">
+                    Espacio reservado para fotografía de los Shapers y
+                    voluntarios en acción.
+                  </p>
+                </div>
+
+                {/* Sello flotante de estatus sin fines de lucro */}
+                <div className="mt-4 flex items-center gap-3 rounded-2xl border border-slate-200 bg-slate-50 p-4 sm:mt-6">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#0B104A] text-white">
+                    <ShieldCheck className="h-5 w-5 text-[#38BDF8]" aria-hidden="true" />
+                  </span>
+                  <p className="font-sans text-xs leading-relaxed text-slate-600 sm:text-sm">
+                    <strong className="text-[#0B104A]">
+                      Organización juvenil sin fines de lucro
+                    </strong>{" "}
+                    operando en San Salvador, El Salvador, bajo respaldo del
+                    Foro Económico Mundial.
                   </p>
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* Misión, Visión y Valores */}
-          <div className="grid gap-6 sm:grid-cols-1 lg:col-span-7">
-            {PILLARS.map((pillar) => {
-              const Icon = pillar.icon;
-              return (
-                <div
-                  key={pillar.title}
-                  className="group flex flex-col gap-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:border-[#0EA5E9]/50 hover:shadow-md sm:flex-row sm:items-start"
-                >
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#0F2C59]/5 text-[#1E3A8A] transition-colors group-hover:bg-[#0F2C59] group-hover:text-white">
-                    <Icon className="h-6 w-6" aria-hidden="true" />
-                  </div>
-                  <div>
-                    <h3 className="font-display text-xl font-bold text-[#0F2C59]">
-                      {pillar.title}
-                    </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-slate-600 sm:text-base">
-                      {pillar.description}
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
-
-            <div className="flex flex-wrap items-center justify-between gap-4 rounded-2xl bg-[#0F2C59] px-6 py-5 text-white">
-              <div className="flex items-center gap-3">
-                <HeartHandshake
-                  className="h-6 w-6 text-[#F59E0B]"
-                  aria-hidden="true"
-                />
-                <span className="text-sm font-medium sm:text-base">
-                  ¿Quieres conocer nuestros reportes de impacto o estatutos?
-                </span>
-              </div>
-              <a
-                href="#involucrate"
-                className="inline-flex items-center gap-1.5 text-sm font-bold text-[#0EA5E9] hover:text-sky-300"
+            {/* Columna Derecha: Misión, Visión, Valores */}
+            <div className="lg:col-span-6">
+              <span className="font-sans text-xs font-bold uppercase tracking-wider text-[#1D4ED8]">
+                Quiénes Somos · Hub San Salvador
+              </span>
+              <h2
+                id="about-heading"
+                className="mt-3 font-display text-3xl font-bold leading-tight text-[#0B104A] sm:text-4xl"
               >
-                <ShieldCheck className="h-4 w-4" aria-hidden="true" />
-                Contáctanos
-              </a>
+                Identidad local con respaldo global desde 2012
+              </h2>
+              <p className="mt-5 font-serif text-base leading-relaxed text-[#4A5355] sm:text-lg">
+                <strong>Global Shapers Community – Hub San Salvador</strong> es
+                una iniciativa nacida en el marco del{" "}
+                <strong>Foro Económico Mundial (WEF)</strong>. Reunimos a
+                jóvenes líderes voluntarios comprometidos con construir un El
+                Salvador más próspero, inclusivo y resiliente.
+              </p>
+
+              <ul className="mt-6 space-y-4">
+                <li className="flex items-start gap-3">
+                  <span className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-50 text-[#1D4ED8]">
+                    <Check className="h-4 w-4" aria-hidden="true" />
+                  </span>
+                  <p className="font-serif text-sm leading-relaxed text-[#4A5355] sm:text-base">
+                    <strong className="font-display text-[#0B104A]">
+                      Misión:
+                    </strong>{" "}
+                    Empoderar a jóvenes salvadoreños para diseñar y ejecutar
+                    proyectos medibles en educación financiera, bienestar y
+                    desarrollo comunitario.
+                  </p>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-50 text-[#1D4ED8]">
+                    <Check className="h-4 w-4" aria-hidden="true" />
+                  </span>
+                  <p className="font-serif text-sm leading-relaxed text-[#4A5355] sm:text-base">
+                    <strong className="font-display text-[#0B104A]">
+                      Visión:
+                    </strong>{" "}
+                    Un El Salvador donde las juventudes lideran soluciones
+                    sostenibles que fortalecen cada comunidad.
+                  </p>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-50 text-[#1D4ED8]">
+                    <Check className="h-4 w-4" aria-hidden="true" />
+                  </span>
+                  <p className="font-serif text-sm leading-relaxed text-[#4A5355] sm:text-base">
+                    <strong className="font-display text-[#0B104A]">
+                      Valores:
+                    </strong>{" "}
+                    Transparencia, servicio comunitario, integridad en la
+                    rendición de cuentas y colaboración multisectorial.
+                  </p>
+                </li>
+              </ul>
+
+              <div className="mt-8">
+                <a
+                  href="#proyectos"
+                  className="inline-flex items-center gap-2 rounded-sm bg-[#1D4ED8] px-7 py-3.5 font-sans text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#0E4D92]"
+                >
+                  Explorar nuestros proyectos
+                  <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                </a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

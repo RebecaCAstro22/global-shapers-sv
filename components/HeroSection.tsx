@@ -1,139 +1,189 @@
-import { ArrowRight, Heart, MapPin, ShieldCheck, Sparkles, Users } from "lucide-react";
+import {
+  ArrowRight,
+  Award,
+  BookOpen,
+  Heart,
+  ImageIcon,
+  MapPin,
+  ShieldCheck,
+  Users,
+} from "lucide-react";
+
+/* TODO: Actualizar estas métricas con los datos reales auditados del Hub San Salvador */
+const COUNTER_METRICS = [
+  {
+    icon: Users,
+    value: "+45",
+    label: "Voluntarios y Shapers Activos",
+    badgeBg: "bg-blue-50 text-[#1D4ED8]",
+  },
+  {
+    icon: MapPin,
+    value: "18+",
+    label: "Comunidades Impactadas",
+    badgeBg: "bg-sky-50 text-[#0EA5E9]",
+  },
+  {
+    icon: BookOpen,
+    value: "120+",
+    label: "Talleres y Jornadas Impartidas",
+    badgeBg: "bg-indigo-50 text-[#525FE1]",
+  },
+  {
+    icon: Award,
+    value: "3,500+",
+    label: "Jóvenes y Familias Beneficiadas",
+    badgeBg: "bg-cyan-50 text-[#0E4D92]",
+  },
+];
 
 export default function HeroSection() {
   return (
-    <section
-      aria-labelledby="hero-heading"
-      className="relative overflow-hidden bg-gradient-to-br from-[#0F2C59] via-[#0E4D92] to-[#1D4ED8] pt-28 pb-20 text-white sm:pt-36 sm:pb-28"
-    >
-      {/* Elementos decorativos sutiles de fondo */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -top-24 right-0 h-96 w-96 rounded-full bg-[#0EA5E9]/15 blur-3xl"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute bottom-0 left-0 h-80 w-80 rounded-full bg-[#F59E0B]/10 blur-3xl"
-      />
+    <>
+      {/* HERO ESTILO EDULEB: Fondo pastel suave + Jost Display + Zilla Slab + DM Sans */}
+      <section
+        aria-labelledby="hero-heading"
+        className="relative overflow-hidden bg-gradient-to-br from-[#FDF6EC] via-[#F7F9FF] to-[#EBF3FF] pt-28 pb-20 sm:pt-36 sm:pb-24"
+      >
+        {/* Acentos sutiles de fondo */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -top-24 right-0 h-96 w-96 rounded-full bg-[#1D4ED8]/10 blur-3xl"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute bottom-0 left-0 h-80 w-80 rounded-full bg-[#0EA5E9]/10 blur-3xl"
+        />
 
-      <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-12 lg:px-8">
-        {/* Columna Izquierda: Mensaje Principal y CTAs */}
-        <div className="lg:col-span-7">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold tracking-wide text-sky-200 backdrop-blur-sm sm:text-sm">
-            <Sparkles className="h-4 w-4 text-[#F59E0B]" aria-hidden="true" />
-            <span>Iniciativa del Foro Económico Mundial · El Salvador</span>
-          </div>
+        <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-12 lg:px-8">
+          {/* Columna Izquierda: Título Jost + Subtítulo Zilla Slab + CTAs DM Sans */}
+          <div className="lg:col-span-6">
+            <span className="inline-flex items-center gap-2 rounded-full border border-[#1D4ED8]/20 bg-white/80 px-4 py-1.5 font-sans text-xs font-semibold uppercase tracking-wider text-[#0E4D92] shadow-sm">
+              <ShieldCheck className="h-4 w-4 text-[#1D4ED8]" aria-hidden="true" />
+              Iniciativa del Foro Económico Mundial · El Salvador
+            </span>
 
-          <h1
-            id="hero-heading"
-            className="font-display text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl"
-          >
-            Liderazgo juvenil que{" "}
-            <span className="text-[#F59E0B]">transforma comunidades</span> en El
-            Salvador
-          </h1>
-
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-100 sm:text-xl">
-            Jóvenes voluntarios de{" "}
-            <strong className="font-semibold text-white">
-              Global Shapers San Salvador
-            </strong>{" "}
-            creando proyectos de impacto social en educación financiera,
-            resiliencia comunitaria y bienestar juvenil desde 2012.
-          </p>
-
-          {/* Botones de Acción (CTAs) */}
-          <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
-            <a
-              href="#donar"
-              className="inline-flex items-center justify-center gap-2.5 rounded-full bg-[#F59E0B] px-7 py-4 text-base font-bold text-[#0F2C59] shadow-lg shadow-amber-500/20 transition-all hover:-translate-y-0.5 hover:bg-[#fbbf24] focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#0F2C59]"
+            <h1
+              id="hero-heading"
+              className="mt-6 font-display text-4xl font-bold leading-[1.12] tracking-tight text-[#0B104A] sm:text-5xl lg:text-[58px]"
             >
-              <Heart className="h-5 w-5 fill-current" aria-hidden="true" />
-              Hacer una donación
-            </a>
+              <span className="text-[#1D4ED8]">Liderazgo Juvenil</span> que
+              Transforma Comunidades en El Salvador
+            </h1>
 
-            <a
-              href="#proyectos"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/30 bg-white/10 px-7 py-4 text-base font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0EA5E9]"
-            >
-              Conocer nuestros proyectos
-              <ArrowRight className="h-5 w-5" aria-hidden="true" />
-            </a>
-          </div>
-
-          {/* Indicadores rápidos de confianza institucional */}
-          <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-white/15 pt-6 text-sm text-slate-200">
-            <span className="inline-flex items-center gap-2">
-              <ShieldCheck
-                className="h-4 w-4 text-[#0EA5E9]"
-                aria-hidden="true"
-              />
-              Organización sin fines de lucro
-            </span>
-            <span className="inline-flex items-center gap-2">
-              <MapPin className="h-4 w-4 text-[#F59E0B]" aria-hidden="true" />
-              San Salvador, El Salvador
-            </span>
-            <span className="inline-flex items-center gap-2">
-              <Users className="h-4 w-4 text-[#0EA5E9]" aria-hidden="true" />
-              100% impulsado por voluntarios
-            </span>
-          </div>
-        </div>
-
-        {/* Columna Derecha: Tarjeta Visual Institucional */}
-        {/* TODO: Reemplazar el bloque gráfico con una fotografía real del Hub San Salvador usando next/image */}
-        <div className="lg:col-span-5">
-          <div className="relative rounded-3xl border border-white/15 bg-white/10 p-6 shadow-2xl backdrop-blur-md sm:p-8">
-            <div className="mb-6 flex items-center justify-between">
-              <span className="rounded-lg bg-[#0EA5E9]/20 px-3 py-1 text-xs font-bold uppercase tracking-wider text-sky-200">
-                Impacto Local
-              </span>
-              <span className="text-xs font-medium text-slate-300">
-                globalshaperssv.org
-              </span>
-            </div>
-
-            <div className="space-y-4">
-              <div className="rounded-2xl bg-white/95 p-5 text-[#0F2C59] shadow-sm">
-                <p className="text-xs font-bold uppercase tracking-wider text-[#1E3A8A]">
-                  Enfoque Prioritario
-                </p>
-                <p className="mt-1 font-display text-lg font-bold">
-                  Educación Financiera &amp; Bienestar Juvenil
-                </p>
-                <p className="mt-1.5 text-sm text-slate-600">
-                  Herramientas prácticas para que jóvenes y familias salvadoreñas
-                  construyan autonomía económica y resiliencia comunitaria.
-                </p>
-              </div>
-
-              <div className="grid grid-cols-2 gap-4">
-                <div className="rounded-2xl border border-white/15 bg-[#0F2C59]/70 p-4">
-                  <p className="font-display text-2xl font-extrabold text-[#F59E0B]">
-                    +45
-                  </p>
-                  <p className="mt-1 text-xs font-medium text-slate-200">
-                    Jóvenes Shapers y voluntarios activos
-                  </p>
-                </div>
-                <div className="rounded-2xl border border-white/15 bg-[#0F2C59]/70 p-4">
-                  <p className="font-display text-2xl font-extrabold text-[#0EA5E9]">
-                    18+
-                  </p>
-                  <p className="mt-1 text-xs font-medium text-slate-200">
-                    Comunidades y centros educativos apoyados
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <p className="mt-5 text-center text-xs text-slate-300">
-              Parte de una red global en más de 500 ciudades del mundo.
+            <p className="mt-6 max-w-xl font-serif text-lg leading-relaxed text-[#4A5355] sm:text-xl">
+              Somos jóvenes voluntarios de{" "}
+              <strong className="font-semibold text-[#0B104A]">
+                Global Shapers San Salvador
+              </strong>{" "}
+              impulsando soluciones locales en educación financiera, bienestar
+              comunitario y desarrollo social desde 2012.
             </p>
+
+            {/* Botones de Acción (CTAs) */}
+            <div className="mt-8 flex flex-col gap-3.5 sm:flex-row sm:items-center">
+              <a
+                href="#donar"
+                className="inline-flex items-center justify-center gap-2 rounded-sm bg-[#1D4ED8] px-7 py-4 font-sans text-base font-semibold text-white shadow-md shadow-blue-700/15 transition-all hover:-translate-y-0.5 hover:bg-[#0E4D92] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0B104A] focus-visible:ring-offset-2"
+              >
+                <Heart className="h-4 w-4 fill-current" aria-hidden="true" />
+                Hacer una donación
+              </a>
+
+              <a
+                href="#proyectos"
+                className="inline-flex items-center justify-center gap-2 rounded-sm border border-[#0B104A]/20 bg-white px-7 py-4 font-sans text-base font-semibold text-[#0B104A] shadow-sm transition-all hover:border-[#1D4ED8] hover:text-[#1D4ED8] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1D4ED8]"
+              >
+                Conocer nuestros proyectos
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </a>
+            </div>
+          </div>
+
+          {/* Columna Derecha: Espacio reservado para fotografía real del Hub (estilo home-img2 + home_ps flotante) */}
+          {/* TODO: Reemplazar este contenedor con la fotografía principal del equipo/voluntarios usando next/image */}
+          <div className="relative lg:col-span-6">
+            <div className="relative mx-auto max-w-lg lg:ml-auto">
+              <div className="relative flex aspect-[4/4.3] w-full flex-col items-center justify-center overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#0F2C59] via-[#0E4D92] to-[#1D4ED8] p-8 text-center text-white shadow-2xl">
+                {/* Círculos decorativos de fondo */}
+                <div
+                  aria-hidden="true"
+                  className="absolute -right-12 -top-12 h-48 w-48 rounded-full bg-white/10"
+                />
+                <div
+                  aria-hidden="true"
+                  className="absolute -bottom-16 -left-16 h-56 w-56 rounded-full bg-[#0EA5E9]/20"
+                />
+
+                <div className="relative z-10 flex flex-col items-center">
+                  <span className="flex h-16 w-16 items-center justify-center rounded-2xl border border-white/25 bg-white/10 backdrop-blur-sm">
+                    <ImageIcon className="h-8 w-8 text-sky-200" aria-hidden="true" />
+                  </span>
+                  <p className="mt-5 font-display text-xl font-bold text-white">
+                    Fotografía Principal del Hub
+                  </p>
+                  <p className="mt-2 max-w-xs font-serif text-sm text-sky-100">
+                    Espacio reservado para imagen de jóvenes voluntarios en
+                    comunidad (San Salvador, El Salvador).
+                  </p>
+                </div>
+              </div>
+
+              {/* Tarjeta flotante estilo .home_ps de Eduleb */}
+              <div className="absolute -bottom-6 left-4 rounded-2xl border border-slate-100 bg-white px-6 py-4 shadow-xl sm:-left-6">
+                <div className="flex items-center gap-3.5">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 text-[#1D4ED8]">
+                    <Users className="h-6 w-6" aria-hidden="true" />
+                  </span>
+                  <div>
+                    <p className="font-display text-2xl font-bold text-[#0B104A]">
+                      +12 años
+                    </p>
+                    <p className="font-sans text-xs font-medium text-slate-500">
+                      Impactando desde 2012
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* BARRA DE CONTADORES ESTILO EDULEB (.counter_feature) */}
+      <section
+        id="impacto"
+        aria-label="Métricas de impacto"
+        className="relative z-10 -mt-10 pb-12"
+      >
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {COUNTER_METRICS.map((item) => {
+              const Icon = item.icon;
+              return (
+                <div
+                  key={item.label}
+                  className="flex items-center gap-4 rounded-xl border border-slate-200/80 bg-white p-6 shadow-lg shadow-slate-200/40 transition-transform hover:-translate-y-0.5"
+                >
+                  <span
+                    className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-full ${item.badgeBg}`}
+                  >
+                    <Icon className="h-6 w-6" aria-hidden="true" />
+                  </span>
+                  <div>
+                    <p className="font-display text-3xl font-bold text-[#0B104A]">
+                      {item.value}
+                    </p>
+                    <p className="font-sans text-sm font-medium text-slate-600">
+                      {item.label}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+    </>
   );
 }

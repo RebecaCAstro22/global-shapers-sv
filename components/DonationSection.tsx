@@ -7,6 +7,7 @@ import {
   CreditCard,
   ExternalLink,
   Heart,
+  ImageIcon,
   Landmark,
   Lock,
   ShieldCheck,
@@ -24,8 +25,7 @@ const PRESET_AMOUNTS = [
   },
   {
     amount: 25,
-    impact:
-      "Con $25 financias materiales educativos para un taller juvenil.",
+    impact: "Con $25 financias materiales educativos para un taller juvenil.",
   },
   {
     amount: 50,
@@ -90,56 +90,67 @@ export default function DonationSection() {
     <section
       id="donar"
       aria-labelledby="donation-heading"
-      className="relative overflow-hidden bg-white py-20 sm:py-24"
+      className="bg-white py-20 sm:py-24"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid items-start gap-12 lg:grid-cols-12">
-          {/* Columna Izquierda: Propósito y Transparencia */}
+          {/* Columna Izquierda: Propósito, Sello de Transparencia y Espacio para Foto de Impacto */}
           <div className="lg:col-span-5">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-100 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-[#0F2C59]">
-              <Heart className="h-3.5 w-3.5 fill-[#F59E0B] text-[#F59E0B]" aria-hidden="true" />
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-50 px-3.5 py-1 font-sans text-xs font-bold uppercase tracking-wider text-[#1D4ED8]">
+              <Heart className="h-3.5 w-3.5 fill-current" aria-hidden="true" />
               Tu Aporte Transforma Vidas
             </span>
 
             <h2
               id="donation-heading"
-              className="mt-4 font-display text-3xl font-extrabold tracking-tight text-[#0F2C59] sm:text-4xl"
+              className="mt-4 font-display text-3xl font-bold leading-tight text-[#0B104A] sm:text-4xl"
             >
               Invierte en el liderazgo juvenil de El Salvador
             </h2>
 
-            <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
+            <p className="mt-4 font-serif text-base leading-relaxed text-[#4A5355] sm:text-lg">
               Cada dólar donado se destina de forma directa a materiales
               educativos, logística territorial y fortalecimiento de comunidades
               vulnerables en San Salvador.
             </p>
 
+            {/* Espacio de color reservado para foto de entrega / taller */}
+            {/* TODO: Reemplazar con fotografía real de beneficiarios o talleres en comunidad */}
+            <div className="mt-6 flex h-44 w-full flex-col items-center justify-center rounded-2xl bg-gradient-to-r from-[#0B104A] via-[#0E4D92] to-[#1D4ED8] p-6 text-center text-white shadow-md">
+              <ImageIcon className="h-7 w-7 text-sky-200" aria-hidden="true" />
+              <p className="mt-2 font-display text-sm font-bold">
+                Fotografía de Impacto en Territorio
+              </p>
+              <p className="mt-1 font-sans text-xs text-sky-100">
+                Espacio reservado para imagen de talleres o entregas
+              </p>
+            </div>
+
             {/* Sello Visual de Transparencia y Rendición de Cuentas */}
-            <div className="mt-8 rounded-2xl border border-sky-200 bg-sky-50/70 p-6">
+            <div className="mt-6 rounded-2xl border border-blue-100 bg-[#F7F9FF] p-6">
               <div className="flex items-start gap-4">
-                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#0F2C59] text-white shadow-sm">
-                  <ShieldCheck className="h-6 w-6 text-[#0EA5E9]" aria-hidden="true" />
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#0B104A] text-white shadow-sm">
+                  <ShieldCheck className="h-6 w-6 text-[#38BDF8]" aria-hidden="true" />
                 </span>
                 <div>
-                  <h3 className="font-display text-base font-bold text-[#0F2C59]">
+                  <h3 className="font-display text-base font-bold text-[#0B104A]">
                     Sello de Transparencia y Rendición de Cuentas
                   </h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-slate-700">
+                  <p className="mt-1.5 font-serif text-sm leading-relaxed text-[#4A5355]">
                     Global Shapers Hub San Salvador opera bajo estándares de
                     integridad sin fines de lucro. Emitimos constancias de aporte
-                    y reportes anuales de impacto para donantes individuales y
-                    aliados corporativos.
+                    y reportes anuales para donantes y aliados.
                   </p>
                 </div>
               </div>
 
-              <div className="mt-5 grid grid-cols-2 gap-3 border-t border-sky-200/80 pt-4 text-xs font-semibold text-[#1E3A8A]">
+              <div className="mt-5 grid grid-cols-2 gap-3 border-t border-blue-100 pt-4 font-sans text-xs font-semibold text-[#0E4D92]">
                 <span className="flex items-center gap-1.5">
-                  <Lock className="h-4 w-4 text-[#0EA5E9]" aria-hidden="true" />
+                  <Lock className="h-4 w-4 text-[#1D4ED8]" aria-hidden="true" />
                   Aporte 100% trazable
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <Check className="h-4 w-4 text-[#0EA5E9]" aria-hidden="true" />
+                  <Check className="h-4 w-4 text-[#1D4ED8]" aria-hidden="true" />
                   Gestión voluntaria sin lucro
                 </span>
               </div>
@@ -148,25 +159,25 @@ export default function DonationSection() {
 
           {/* Columna Derecha: Módulo Interactivo de Donación */}
           <div className="lg:col-span-7">
-            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-xl shadow-slate-200/60 sm:p-8">
+            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-xl shadow-slate-200/50 sm:p-8">
               {/* 1. Selector de Frecuencia */}
               <div>
-                <p className="text-xs font-bold uppercase tracking-wider text-slate-500">
+                <p className="font-sans text-xs font-bold uppercase tracking-wider text-slate-500">
                   1. Elige la frecuencia de tu aporte
                 </p>
                 <div
                   role="group"
                   aria-label="Frecuencia de donación"
-                  className="mt-3 grid grid-cols-2 gap-2 rounded-2xl bg-slate-100 p-1.5"
+                  className="mt-3 grid grid-cols-2 gap-2 rounded-xl bg-slate-100 p-1.5"
                 >
                   <button
                     type="button"
                     onClick={() => setFrequency("unica")}
                     aria-pressed={frequency === "unica"}
-                    className={`rounded-xl py-3 text-sm font-bold transition-all ${
+                    className={`rounded-lg py-3 font-sans text-sm font-bold transition-all ${
                       frequency === "unica"
-                        ? "bg-[#0F2C59] text-white shadow-sm"
-                        : "text-slate-600 hover:text-[#0F2C59]"
+                        ? "bg-[#0B104A] text-white shadow-sm"
+                        : "text-slate-600 hover:text-[#0B104A]"
                     }`}
                   >
                     Donación Única
@@ -175,10 +186,10 @@ export default function DonationSection() {
                     type="button"
                     onClick={() => setFrequency("mensual")}
                     aria-pressed={frequency === "mensual"}
-                    className={`rounded-xl py-3 text-sm font-bold transition-all ${
+                    className={`rounded-lg py-3 font-sans text-sm font-bold transition-all ${
                       frequency === "mensual"
-                        ? "bg-[#0F2C59] text-white shadow-sm"
-                        : "text-slate-600 hover:text-[#0F2C59]"
+                        ? "bg-[#0B104A] text-white shadow-sm"
+                        : "text-slate-600 hover:text-[#0B104A]"
                     }`}
                   >
                     Donación Mensual
@@ -188,7 +199,7 @@ export default function DonationSection() {
 
               {/* 2. Selector de Monto en USD */}
               <div className="mt-7">
-                <p className="text-xs font-bold uppercase tracking-wider text-slate-500">
+                <p className="font-sans text-xs font-bold uppercase tracking-wider text-slate-500">
                   2. Selecciona un monto (USD)
                 </p>
                 <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-5">
@@ -203,10 +214,10 @@ export default function DonationSection() {
                           setSelectedAmount(item.amount);
                         }}
                         aria-pressed={active}
-                        className={`rounded-xl border py-3 font-display text-lg font-extrabold transition-all ${
+                        className={`rounded-lg border py-3 font-display text-lg font-bold transition-all ${
                           active
-                            ? "border-[#F59E0B] bg-amber-50 text-[#0F2C59] ring-2 ring-[#F59E0B]"
-                            : "border-slate-200 bg-white text-slate-700 hover:border-[#1E3A8A]/40"
+                            ? "border-[#1D4ED8] bg-blue-50 text-[#0B104A] ring-2 ring-[#1D4ED8]"
+                            : "border-slate-200 bg-white text-slate-700 hover:border-[#1D4ED8]/40"
                         }`}
                       >
                         ${item.amount}
@@ -218,10 +229,10 @@ export default function DonationSection() {
                     type="button"
                     onClick={() => setIsCustomAmount(true)}
                     aria-pressed={isCustomAmount}
-                    className={`col-span-2 rounded-xl border py-3 text-sm font-bold transition-all sm:col-span-1 ${
+                    className={`col-span-2 rounded-lg border py-3 font-sans text-sm font-bold transition-all sm:col-span-1 ${
                       isCustomAmount
-                        ? "border-[#F59E0B] bg-amber-50 text-[#0F2C59] ring-2 ring-[#F59E0B]"
-                        : "border-slate-200 bg-white text-slate-700 hover:border-[#1E3A8A]/40"
+                        ? "border-[#1D4ED8] bg-blue-50 text-[#0B104A] ring-2 ring-[#1D4ED8]"
+                        : "border-slate-200 bg-white text-slate-700 hover:border-[#1D4ED8]/40"
                     }`}
                   >
                     Otro monto
@@ -232,12 +243,12 @@ export default function DonationSection() {
                   <div className="mt-4">
                     <label
                       htmlFor="custom-amount"
-                      className="block text-xs font-semibold text-slate-600"
+                      className="block font-sans text-xs font-semibold text-slate-600"
                     >
                       Ingresa tu monto en dólares (USD)
                     </label>
                     <div className="relative mt-1.5">
-                      <span className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 font-bold text-slate-500">
+                      <span className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 font-sans font-bold text-slate-500">
                         $
                       </span>
                       <input
@@ -247,25 +258,25 @@ export default function DonationSection() {
                         step={1}
                         value={customValue}
                         onChange={(e) => setCustomValue(e.target.value)}
-                        className="w-full rounded-xl border border-slate-300 py-3 pl-8 pr-16 font-display text-lg font-bold text-[#0F2C59] focus:border-[#0EA5E9] focus:outline-none focus:ring-2 focus:ring-[#0EA5E9]/30"
+                        className="w-full rounded-lg border border-slate-300 py-3 pl-8 pr-16 font-display text-lg font-bold text-[#0B104A] focus:border-[#1D4ED8] focus:outline-none focus:ring-2 focus:ring-[#1D4ED8]/25"
                         placeholder="35"
                       />
-                      <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4 text-xs font-bold text-slate-400">
+                      <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4 font-sans text-xs font-bold text-slate-400">
                         USD
                       </span>
                     </div>
                   </div>
                 )}
 
-                {/* Descripción dinámica del impacto */}
-                <div className="mt-4 rounded-xl border border-amber-200 bg-amber-50/70 px-4 py-3 text-sm font-medium text-[#0F2C59]">
+                {/* Descripción dinámica del impacto en Zilla Slab */}
+                <div className="mt-4 rounded-xl border border-blue-100 bg-[#F7F9FF] px-4 py-3 font-serif text-sm font-medium text-[#0B104A]">
                   {impactMessage}
                 </div>
               </div>
 
               {/* 3. Método de Pago */}
               <div className="mt-7">
-                <p className="text-xs font-bold uppercase tracking-wider text-slate-500">
+                <p className="font-sans text-xs font-bold uppercase tracking-wider text-slate-500">
                   3. Elige tu método de pago
                 </p>
 
@@ -274,9 +285,9 @@ export default function DonationSection() {
                     type="button"
                     onClick={() => setPaymentMethod("pasarela")}
                     aria-pressed={paymentMethod === "pasarela"}
-                    className={`flex items-center justify-center gap-2 rounded-xl border px-3 py-3 text-xs font-bold transition-all sm:text-sm ${
+                    className={`flex items-center justify-center gap-2 rounded-lg border px-3 py-3 font-sans text-xs font-bold transition-all sm:text-sm ${
                       paymentMethod === "pasarela"
-                        ? "border-[#1E3A8A] bg-[#0F2C59] text-white"
+                        ? "border-[#0B104A] bg-[#0B104A] text-white"
                         : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50"
                     }`}
                   >
@@ -288,9 +299,9 @@ export default function DonationSection() {
                     type="button"
                     onClick={() => setPaymentMethod("paypal")}
                     aria-pressed={paymentMethod === "paypal"}
-                    className={`flex items-center justify-center gap-2 rounded-xl border px-3 py-3 text-xs font-bold transition-all sm:text-sm ${
+                    className={`flex items-center justify-center gap-2 rounded-lg border px-3 py-3 font-sans text-xs font-bold transition-all sm:text-sm ${
                       paymentMethod === "paypal"
-                        ? "border-[#1E3A8A] bg-[#0F2C59] text-white"
+                        ? "border-[#0B104A] bg-[#0B104A] text-white"
                         : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50"
                     }`}
                   >
@@ -302,9 +313,9 @@ export default function DonationSection() {
                     type="button"
                     onClick={() => setPaymentMethod("transferencia")}
                     aria-pressed={paymentMethod === "transferencia"}
-                    className={`flex items-center justify-center gap-2 rounded-xl border px-3 py-3 text-xs font-bold transition-all sm:text-sm ${
+                    className={`flex items-center justify-center gap-2 rounded-lg border px-3 py-3 font-sans text-xs font-bold transition-all sm:text-sm ${
                       paymentMethod === "transferencia"
-                        ? "border-[#1E3A8A] bg-[#0F2C59] text-white"
+                        ? "border-[#0B104A] bg-[#0B104A] text-white"
                         : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50"
                     }`}
                   >
@@ -313,18 +324,17 @@ export default function DonationSection() {
                   </button>
                 </div>
 
-                {/* Contenido por método de pago */}
                 {paymentMethod === "pasarela" && (
-                  <div className="mt-5 rounded-2xl border border-slate-200 bg-slate-50 p-5">
-                    <p className="text-sm text-slate-600">
+                  <div className="mt-5 rounded-xl border border-slate-200 bg-slate-50 p-5">
+                    <p className="font-serif text-sm text-[#4A5355]">
                       Serás redirigido a nuestra pasarela segura para completar tu{" "}
-                      <strong>
+                      <strong className="text-[#0B104A]">
                         {frequency === "mensual"
                           ? "donación mensual"
                           : "donación única"}
                       </strong>{" "}
-                      de <strong>${effectiveAmount} USD</strong> con tarjeta de
-                      débito o crédito.
+                      de <strong className="text-[#0B104A]">${effectiveAmount} USD</strong>{" "}
+                      con tarjeta de débito o crédito.
                     </p>
                     {/* TODO: Conectar con el checkout real de Wompi El Salvador o Stripe */}
                     <a
@@ -335,7 +345,7 @@ export default function DonationSection() {
                       }
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#F59E0B] px-6 py-3.5 text-base font-bold text-[#0F2C59] shadow-sm transition-colors hover:bg-[#D97706] hover:text-white"
+                      className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-sm bg-[#1D4ED8] px-6 py-3.5 font-sans text-base font-bold text-white shadow-sm transition-colors hover:bg-[#0E4D92]"
                     >
                       Donar ${effectiveAmount} USD{" "}
                       {frequency === "mensual" ? "/ mes" : "ahora"}
@@ -345,18 +355,18 @@ export default function DonationSection() {
                 )}
 
                 {paymentMethod === "paypal" && (
-                  <div className="mt-5 rounded-2xl border border-slate-200 bg-slate-50 p-5">
-                    <p className="text-sm text-slate-600">
+                  <div className="mt-5 rounded-xl border border-slate-200 bg-slate-50 p-5">
+                    <p className="font-serif text-sm text-[#4A5355]">
                       Dona desde cualquier parte del mundo de forma rápida y
                       protegida a través de PayPal por{" "}
-                      <strong>${effectiveAmount} USD</strong>.
+                      <strong className="text-[#0B104A]">${effectiveAmount} USD</strong>.
                     </p>
                     {/* TODO: Reemplazar con el enlace oficial de PayPal Donate del Hub */}
                     <a
                       href={PAYMENT_LINKS.paypal}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#1E3A8A] px-6 py-3.5 text-base font-bold text-white shadow-sm transition-colors hover:bg-[#0F2C59]"
+                      className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-sm bg-[#0B104A] px-6 py-3.5 font-sans text-base font-bold text-white shadow-sm transition-colors hover:bg-[#1D4ED8]"
                     >
                       Continuar con PayPal (${effectiveAmount} USD)
                       <ExternalLink className="h-4 w-4" aria-hidden="true" />
@@ -365,8 +375,8 @@ export default function DonationSection() {
                 )}
 
                 {paymentMethod === "transferencia" && (
-                  <div className="mt-5 rounded-2xl border border-slate-200 bg-slate-50 p-5">
-                    <p className="text-sm font-medium text-[#0F2C59]">
+                  <div className="mt-5 rounded-xl border border-slate-200 bg-slate-50 p-5">
+                    <p className="font-sans text-sm font-semibold text-[#0B104A]">
                       Transferencia bancaria local en El Salvador (Transfer365 /
                       UNI):
                     </p>
@@ -376,13 +386,13 @@ export default function DonationSection() {
                         return (
                           <div
                             key={field.label}
-                            className="flex items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white px-4 py-2.5"
+                            className="flex items-center justify-between gap-3 rounded-lg border border-slate-200 bg-white px-4 py-2.5"
                           >
                             <div className="min-w-0">
-                              <p className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">
+                              <p className="font-sans text-[11px] font-semibold uppercase tracking-wider text-slate-400">
                                 {field.label}
                               </p>
-                              <p className="truncate text-sm font-bold text-[#0F2C59]">
+                              <p className="truncate font-sans text-sm font-bold text-[#0B104A]">
                                 {field.value}
                               </p>
                             </div>
@@ -390,7 +400,7 @@ export default function DonationSection() {
                               type="button"
                               onClick={() => handleCopy(field.label, field.value)}
                               aria-label={`Copiar ${field.label}`}
-                              className="inline-flex shrink-0 items-center gap-1.5 rounded-lg border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-semibold text-slate-700 transition-colors hover:bg-slate-100"
+                              className="inline-flex shrink-0 items-center gap-1.5 rounded-md border border-slate-200 bg-slate-50 px-3 py-1.5 font-sans text-xs font-semibold text-slate-700 transition-colors hover:bg-slate-100"
                             >
                               {isCopied ? (
                                 <>
@@ -408,15 +418,15 @@ export default function DonationSection() {
                         );
                       })}
                     </div>
-                    <p className="mt-3 text-xs text-slate-500">
+                    <p className="mt-3 font-sans text-xs text-slate-500">
                       Envía tu comprobante a{" "}
                       <a
                         href="mailto:globalshaperssv@gmail.com"
-                        className="font-semibold text-[#1E3A8A] underline"
+                        className="font-semibold text-[#1D4ED8] underline"
                       >
                         globalshaperssv@gmail.com
                       </a>{" "}
-                      para emitir tu recibo de agradecimiento y transparencia.
+                      para emitir tu recibo de transparencia.
                     </p>
                   </div>
                 )}
